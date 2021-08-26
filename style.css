@@ -1,0 +1,31 @@
+button {
+    margin: 8px;
+}
+
+#colorInfo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#currentColor {
+    background-color: black;
+    height: 20px;
+    width: 20px;
+}
+
+.gridSquare {
+    color: white;
+}
+
+#menu {
+    justify-content: center;
+    display: flex;
+    margin: 10px;
+}
+
+#wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
