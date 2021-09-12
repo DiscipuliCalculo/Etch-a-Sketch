@@ -7,7 +7,6 @@ let color = DEFAULT_COLOR;
 
 createGrid(gridSize);
 Draw();
-console.log(color)
 
 document.getElementById("Reset").addEventListener("click", function() {;
     newGrid();
@@ -32,7 +31,6 @@ function Draw() {
     const elements = document.querySelectorAll('.gridSquare');
     elements.forEach(element => {
         element.addEventListener('mouseover', (e)=>{   
-            console.log('hello')
         element.setAttribute('style', `background-color: ${color}`);
         });
     });
@@ -52,8 +50,8 @@ function createGrid (gridSize) {
     height: 600px;
     grid-template-columns: repeat(${gridSize}, 1fr);
     grid-template-rows: repeat(${gridSize}, 1fr);
-    width: 600px;
-`;
+    width: 600px;`
+;
 
     for (let i = 0; i < gridSize ** 2; i++) {
         var gridSquare = document.createElement('div');
