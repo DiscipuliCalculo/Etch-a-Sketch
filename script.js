@@ -8,33 +8,49 @@ let color = DEFAULT_COLOR;
 createGrid(gridSize);
 Draw();
 
-document.getElementById("Reset").addEventListener("click", function() {;
+document.getElementById("resetGrid").addEventListener("click", function() {;
     newGrid();
 });
 
 document.getElementById("newGrid").addEventListener("click", function() {
-    gridSize = window.prompt('What size should the grid be?');
-    newGrid();
+    let input = window.prompt('What size should the grid be?');
+    if (input !== null) {
+        if (input !== '' && !isNaN(input)) {
+            gridSize = input;
+            newGrid();
+        } else {
+            window.alert('Please enter a valid number.');
+        }
+    }
 });
 
-document.getElementById("Eraser").addEventListener("click", function() {
+document.getElementById("eraser").addEventListener("click", function() {
     color = 'white';
 });
 
-document.getElementById("changeColor").addEventListener("click", function() {
-    color = window.prompt('What color do you want');
-    document.getElementById("currentColor").style.backgroundColor = `${color}`;
-}); 
+document.getElementById("colorPicker").addEventListener("input", function() {
+    color = this.value;
+    document.getElementById("currentColor").style.backgroundColor = color;
+});
 
 // adding the event listener by looping
 function Draw() {
     const elements = document.querySelectorAll('.gridSquare');
     elements.forEach(element => {
-        element.addEventListener('mouseover', (e)=>{   
-        element.setAttribute('style', `background-color: ${color}`);
+        element.addEventListener('mousedown', function() {
+            isDrawing = true;
+            element.style.backgroundColor = color;
+        });
+        element.addEventListener('mousemove', function() {
+            if (isDrawing) {
+                element.style.backgroundColor = color;
+            }
+        });
+        element.addEventListener('mouseup', function() {
+            isDrawing = false;
         });
     });
-};
+}
 
 function clearGrid() {
     document.getElementById("gridBox").innerHTML = ''

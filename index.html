@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <link rel='stylesheet' href='style.css'>
-        <script src='script.js' defer></script>
-    </head>
-
-
-    <body>
-        <span id='menu'>
-            <button id='Reset'>Reset Grid</button>
-            <button id='newGrid'>New Grid</button>
-            <button id="Eraser">Erase</button>
-            <button id='changeColor'>Change Color</button>
-            <button id='randomColors'>Random Colors</button>
-        </span>
-        <span id="colorInfo">
-            Current Color:
-            <div id='currentColor'></div>
-        </span>
-        <div id='wrapper'></div>
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>Etch-a-Sketch</title>
+</head>
+<body>
+    <div id="menu">
+        <button id="resetGrid">Reset Grid</button>
+        <button id="newGrid">New Grid</button>
+        <button id="eraser">Erase</button>
+        <input type="color" id="colorPicker">
+    </div>
+    <div id="wrapper"></div>
+</body>
 </html>
