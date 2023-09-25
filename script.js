@@ -33,6 +33,10 @@ document.getElementById("colorPicker").addEventListener("input", function() {
     document.getElementById("currentColor").style.backgroundColor = color;
 });
 
+document.getElementById("saveGrid").addEventListener("click", function () {
+    saveSketch();
+});
+
 // adding the event listener by looping
 function Draw() {
     const elements = document.querySelectorAll('.gridSquare');
@@ -80,4 +84,28 @@ function newGrid () {
     clearGrid();
     createGrid(gridSize);
     Draw();    
+}
+
+function saveSketch() {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    const gridBox = document.getElementById("gridBox");
+
+    canvas.width = gridBox.clientWidth;
+    canvas.height = gridBox.clientHeight;
+
+    const gridSquares = document.querySelectorAll(".gridSquare");
+
+    gridSquares.forEach((square) => {
+        const computedStyle = getComputedStyle(square);
+        const bgColor = computedStyle.backgroundColor;
+        ctx.fillStyle = bgColor;
+        ctx.fillRect(square.offsetLeft, square.offsetTop, square.offsetWidth, square.offsetHeight);
+    });
+
+    const dataURL = canvas.toDataURL("image/png");
+    const a = document.createElement("a");
+    a.href = dataURL;
+    a.download = "sketch.png";
+    a.click();
 }
